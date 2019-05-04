@@ -1,6 +1,9 @@
 @green: green;
-@link-color:        #428bca; // sea blue
+@link-color:        #b94eb4; // sea blue
 @link-color-hover:  lighten(@link-color, 30%);
+@button-after:  darken(@link-color, 10%);
+@button-padding: 15px;
+@button-radius: 15px;
 h1 {
   color: @green;
 }
@@ -9,14 +12,20 @@ body {
   text-align: center;
   margin: auto;
 }
-.title1 {
-  float: left;
+button {
+  color: antiquewhite;
+  padding: @button-padding;
+  background-color: @link-color;
+  border-radius: @button-radius;
+  margin: 20px;
+  font-weight: 900;
 }
 
+button:hover{
+background-color: @button-after;
+}
 
-// Usage
-a,
-.link {
+a, .link {
   color: @link-color;
 }
 a:hover {

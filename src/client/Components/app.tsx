@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Button from '@material-ui/core/Button';
 import '../Less/app.less';
+// import ProfilePicture from '../Assets/profile.png';
 
-interface AppStates{
+interface AppStates {
   username?: string;
 }
 export default class App extends React.Component<{}, AppStates> {
@@ -23,14 +23,12 @@ export default class App extends React.Component<{}, AppStates> {
     return (
       <div>
         <div>
-        <Button variant="contained" color="secondary" onClick={this.getUser}>
-          Sign in
-        </Button>
+          <button onClick={this.getUser}>
+            Say Hi
+          </button>
         </div>
-        <div className="title1">
-        <h1><a href="www.google.com">Say hi</a></h1>
-        
-        {username && <h1>{`Hello ${username}`}</h1>}
+        <div>
+          {username && <h1>{`Hello ${username.toUpperCase()}`}</h1>}
         </div>
       </div>
     );
