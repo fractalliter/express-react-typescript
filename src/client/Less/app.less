@@ -1,0 +1,24 @@
+@green: green;
+@link-color:        #428bca; // sea blue
+@link-color-hover:  lighten(@link-color, 30%);
+h1 {
+  color: @green;
+}
+
+body {
+  text-align: center;
+  margin: auto;
+}
+.title1 {
+  float: left;
+}
+
+
+// Usage
+a,
+.link {
+  color: @link-color;
+}
+a:hover {
+  color: @link-color-hover;
+}
