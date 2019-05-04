@@ -1,6 +1,6 @@
 import * as React from 'react';
 import '../Less/app.less';
-// import ProfilePicture from '../Assets/profile.png';
+import * as ProfilePicture from '../Assets/profile.png';
 
 interface AppStates {
   username?: string;
@@ -28,7 +28,12 @@ export default class App extends React.Component<{}, AppStates> {
           </button>
         </div>
         <div>
-          {username && <h1>{`Hello ${username.toUpperCase()}`}</h1>}
+          {username &&
+          <React.Fragment>
+          <h1>{`Hello ${username.toUpperCase()}`}</h1>
+          <img src={ProfilePicture} />
+          </React.Fragment> 
+          }
         </div>
       </div>
     );
