@@ -8,7 +8,7 @@
     "outDir": "./dist/",
     "skipLibCheck": true
   },
-  "include":[
-    "./src/client/*"
-  ],
-}
+  "include": [
+    "./src/client/*",
+    "./src/client/types/**/*.d.ts"
+  ]
