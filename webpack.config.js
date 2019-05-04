@@ -43,8 +43,6 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              // you can specify a publicPath here
-              // by default it uses publicPath in webpackOptions.output
               publicPath: './Less',
               hmr: process.env.NODE_ENV === 'development',
             },
@@ -83,8 +81,6 @@ module.exports = {
       title: "Book Manager",
     }),
     new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
       filename: './css/[name].css',
       chunkFilename: './css/[id].css',
     }),
