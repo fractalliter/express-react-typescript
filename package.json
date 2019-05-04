@@ -1,7 +1,7 @@
 {
-  "name": "book-manager",
+  "name": "express-react-typescript",
   "version": "1.0.0",
-  "description": "A free and open source book manager",
+  "description": "An Express, React with Typescript and Less boilerplate",
   "main": "src/server/index.js",
   "scripts": {
     "build": "webpack --mode production",
