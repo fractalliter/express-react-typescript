@@ -38,7 +38,7 @@ Separating JavaScript from CSS helps browsers for caching CSS files.
 
 ```bash
 # Clone the repository
-git clone https://github.com/crsandeep/express-react-boilerplate <app-name>
+git clone https://github.com/Fractalliter/express-react-boilerplate <app-name>
 
 #Attention please: change the <app-name> with your prefered name for your app
 
@@ -58,6 +58,8 @@ yarn build (or npm run build)
 yarn start (or npm start)
 ```
 
+And also if you looking for typeless and pure css you can find it [here](https://github.com/crsandeep/simple-react-full-stack)
+ 
 ## Documentation
 
 ### Folder Structure
