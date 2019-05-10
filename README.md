@@ -38,7 +38,7 @@ Separating JavaScript from CSS helps browsers for caching CSS files.
 
 ```bash
 # Clone the repository
-git clone https://github.com/Fractalliter/express-react-boilerplate <app-name>
+git clone https://github.com/Fractalliter/express-react-typescript <app-name>
 
 #Attention please: change the <app-name> with your prefered name for your app
 
