@@ -1,8 +1,8 @@
-# Express-React-Boilerplate
+# express-react-typescript
 
 A boilerplate to build web application using NodeJS, Express, React with Typescript, and Webpack. It's configured to separate JavaScript, CSS and your files as assets in diffrent folders.
 
-- [Express-React-Boilerplate](#Express-React-Boilerplate)
+- [express-react-typescript](#Express-React-Boilerplate)
   - [Introduction](#introduction)
     - [Development mode](#development-mode)
     - [Production mode](#production-mode)
