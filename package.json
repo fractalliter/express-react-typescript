@@ -1,6 +1,6 @@
 {
   "name": "express-react-typescript",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "An Express, React with Typescript and Less boilerplate",
   "main": "src/server/index.js",
   "scripts": {
