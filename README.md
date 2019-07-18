@@ -190,7 +190,7 @@ module.exports = {
     port: 3000,
     open: true,
     proxy: {
-      '/api': 'http://localhost:8080'
+      '/api': 'http://localhost:8050'
     }
   },
   plugins: [
@@ -230,7 +230,7 @@ devServer: {
     port: 3000,
     open: true,
     proxy: {
-        "/api": "http://localhost:8080"
+        "/api": "http://localhost:8050"
     }
 }
 ```
@@ -259,15 +259,14 @@ src/server/index.js is the entry point to the server application. Below is the s
 
 ```javascript
 const express = require("express");
-const os = require("os");
-
+//...
 const app = express();
 
 app.use(express.static("dist"));
-app.get("/api/getUsername", (req, res) =>
-  res.send({ username: os.userInfo().username })
-);
-app.listen(8080, () => console.log("Listening on port 8080!"));
+
+//...
+
+app.listen(8050, () => console.log("Listening on port 8050!"));
 ```
 
 This starts a server and listens on port 8080 for connections. The app responds with `{username: <username>}` for requests to the URL (/api/getUsername). It is also configured to serve the static files from **dist** directory.
