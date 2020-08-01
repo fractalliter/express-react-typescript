@@ -4,10 +4,11 @@
   "description": "An Express, React with Typescript and Less boilerplate",
   "main": "src/server/index.js",
   "scripts": {
-    "build": "webpack --mode production && tsc",
-    "start": "npm run build && node dist/server/index.js",
+    "build-server": "tsc --build tsconfig-server.json",
+    "build": "webpack --mode production && npm run build-server",
+    "start": "npm run build && node dist-server/index.js",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
-    "server": "nodemon dist/server/index.js",
+    "server": "nodemon dist-server/index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Elias Rahmani",

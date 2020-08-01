@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import os from 'os';
 import db from './db';
 
+const port = process.env.PORT || 8050;        // set our port
 const app = express();                 // define our app using express
 
 // configure app to use bodyParser()
@@ -10,16 +11,15 @@ const app = express();                 // define our app using express
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded( { extended: true } ) );
 
-var port = process.env.PORT || 8050;        // set our port
-
 app.use(express.static('dist'));
 app.get('/', function(req, res){
 	console.log('sending index.html');
 	res.sendFile('/dist/index.html');
 });
+
 // ROUTES FOR OUR API
 // =============================================================================
-var router = express.Router();              // get an instance of the express Router
+const router = express.Router();              // get an instance of the express Router
 
 // middleware to use for all requests
 router.use( function ( req, res, next ) {
@@ -27,6 +27,7 @@ router.use( function ( req, res, next ) {
   console.log( 'App is running' );
   next(); // make sure we go to the next routes and don't stop here
 } );
+
 // test http methods
 // ----------------------------------------------------
 router.route( '/test' )

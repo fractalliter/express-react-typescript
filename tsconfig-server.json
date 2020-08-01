@@ -5,12 +5,11 @@
     "jsx": "react",
     "module": "commonjs",
     "sourceMap": true,
-    "outDir": "./dist/",
+    "outDir": "./dist-server/",
     "skipLibCheck": true,
     "esModuleInterop": true
   },
   "include": [
-    "./src/client/*",
-    "./src/client/types/**/*.d.ts",
+    "./src/server/*"
   ]
 }
