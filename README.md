@@ -255,7 +255,7 @@ Here, we tell nodemon to watch the files in the directory src/server where out s
 
 Express is a web application framework for Node.js. It is used to build our backend API's.
 
-src/server/index.js is the entry point to the server application. Below is the src/server/index.js file
+src/server/index.tsx is the entry point to the server application. Below is the src/server/index.tsx file
 
 ```javascript
 const express = require("express");
@@ -277,7 +277,7 @@ This starts a server and listens on port 8080 for connections. The app responds 
 
 ```javascript
 "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
-"server": "nodemon src/server/index.js",
+"server": "nodemon src/server/index.tsx",
 "dev": "concurrently \"npm run server\" \"npm run client\""
 ```
 
