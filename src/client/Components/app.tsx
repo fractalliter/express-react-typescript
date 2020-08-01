@@ -1,6 +1,12 @@
 import * as React from 'react'
+import ReactDOM from 'react-dom'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import '../Less/app.less'
 import * as ProfilePicture from '../Assets/profile.png'
+import SwiperCore, { Navigation, Pagination, Controller, Thumbs } from 'swiper'
+import My_swipe from './swiper_v2'
+
+SwiperCore.use([Navigation, Pagination, Controller, Thumbs])
 
 interface AppStates {
     username?: string
@@ -22,6 +28,12 @@ export default class App extends React.Component<{}, AppStates> {
         textForDelete: null,
     }
 
+    //constructor(props) {
+    //  super(props);
+    //  const [thumbsSwiper, setThumbsSwiper] = React.useState(null);
+    //  const [controlledSwiper, setControlledSwiper] = React.useState(null);
+    //}
+
     getUser = () => {
         fetch('/api/test')
             .then((res) => res.json())
@@ -30,21 +42,7 @@ export default class App extends React.Component<{}, AppStates> {
 
     sendUserInfo = () => {
         let text = this.state.textOfPostTest
-
-        text.trim() &&
-            fetch('/api/test', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    //'Content-Type': 'application/x-www-form-urlencoded',
-                    Accept: 'application/json',
-                },
-                body: JSON.stringify({ text }),
-            })
-                .then((res) => res.json())
-                .then((res) => this.setState({ textForPost: res.text }))
     }
-
     changeUserInfo = () => {
         this.state.textOfPutTest.trim() &&
             fetch('/api/test', {
@@ -72,7 +70,6 @@ export default class App extends React.Component<{}, AppStates> {
                 .then((res) => res.json())
                 .then((res) => this.setState({ textForDelete: res.text }))
     }
-
     render() {
         const { username, textForPost, textForPut, textForDelete } = this.state
         const inputText = 'Input text...'
@@ -133,8 +130,12 @@ export default class App extends React.Component<{}, AppStates> {
                     </div>
                     <div>
                         <label>{'Delete text test: '}</label>
+
                         <h3>{textForDelete}</h3>
                     </div>
+                </div>
+                <div>
+                    <My_swipe />
                 </div>
             </div>
         )
