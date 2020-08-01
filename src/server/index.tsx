@@ -1,8 +1,9 @@
+import express from 'express';
+import bodyParser from 'body-parser';
+import os from 'os';
+import db from './db';
 
-var express = require( 'express' );        // call express
-var app = express();                 // define our app using express
-var bodyParser = require( 'body-parser' );
-const os = require('os');
+const app = express();                 // define our app using express
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
