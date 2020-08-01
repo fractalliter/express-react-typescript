@@ -9,7 +9,8 @@
         "start": "npm run build && node dist-server/index.js",
         "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
         "server": "nodemon dist-server/index.js",
-        "dev": "concurrently \"npm run server\" \"npm run client\""
+        "dev": "concurrently \"npm run server\" \"npm run client\"",
+        "prettier": "prettier --write ."
     },
     "author": "Elias Rahmani",
     "license": "ISC",
