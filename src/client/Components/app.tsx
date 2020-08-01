@@ -1,6 +1,4 @@
-import * as React from 'react'
-import ReactDOM from 'react-dom'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import React from 'react'
 import '../Less/app.less'
 import * as ProfilePicture from '../Assets/profile.png'
 import SwiperCore, { Navigation, Pagination, Controller, Thumbs } from 'swiper'
