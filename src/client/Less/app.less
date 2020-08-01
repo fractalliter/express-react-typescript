@@ -1,33 +1,34 @@
 @green: green;
-@link-color:        #b94eb4; // sea blue
-@link-color-hover:  lighten(@link-color, 30%);
-@button-after:  darken(@link-color, 10%);
+@link-color: #b94eb4; // sea blue
+@link-color-hover: lighten(@link-color, 30%);
+@button-after: darken(@link-color, 10%);
 @button-padding: 5px;
 @button-radius: 15px;
 h1 {
-  color: @green;
+    color: @green;
 }
 
 body {
-  text-align: center;
-  margin: auto;
+    text-align: center;
+    margin: auto;
 }
 button {
-  color: antiquewhite;
-  padding: @button-padding;
-  background-color: @link-color;
-  border-radius: @button-radius;
-  margin: 5px;
-  font-weight: 600;
+    color: antiquewhite;
+    padding: @button-padding;
+    background-color: @link-color;
+    border-radius: @button-radius;
+    margin: 5px;
+    font-weight: 600;
 }
 
-button:hover{
-background-color: @button-after;
+button:hover {
+    background-color: @button-after;
 }
 
-a, .link {
-  color: @link-color;
+a,
+.link {
+    color: @link-color;
 }
 a:hover {
-  color: @link-color-hover;
+    color: @link-color-hover;
 }

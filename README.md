@@ -2,24 +2,24 @@
 
 A boilerplate to build web application using NodeJS, Express, React with Typescript, and Webpack. It's configured to separate JavaScript, CSS and your files as assets in diffrent folders.
 
-- [express-react-typescript](#Express-React-Boilerplate)
-  - [Introduction](#introduction)
-    - [Development mode](#development-mode)
-    - [Production mode](#production-mode)
-  - [Quick Start](#quick-start)
-  - [Documentation](#documentation)
-    - [Folder Structure](#folder-structure)
-    - [Babel](#babel)
-    - [Typescript](#typescript)
-    - [Less](#less)
-    - [ESLint](#eslint)
-    - [Webpack](#webpack)
-    - [Webpack dev server](#webpack-dev-server)
-    - [Nodemon](#nodemon)
-    - [Express](#express)
-    - [Concurrently](#concurrently)
-    - [VSCode + ESLint + Prettier](#vscode--eslint--prettier)
-      - [Installation guide](#installation-guide)
+-   [express-react-typescript](#Express-React-Boilerplate)
+    -   [Introduction](#introduction)
+        -   [Development mode](#development-mode)
+        -   [Production mode](#production-mode)
+    -   [Quick Start](#quick-start)
+    -   [Documentation](#documentation)
+        -   [Folder Structure](#folder-structure)
+        -   [Babel](#babel)
+        -   [Typescript](#typescript)
+        -   [Less](#less)
+        -   [ESLint](#eslint)
+        -   [Webpack](#webpack)
+        -   [Webpack dev server](#webpack-dev-server)
+        -   [Nodemon](#nodemon)
+        -   [Express](#express)
+        -   [Concurrently](#concurrently)
+        -   [VSCode + ESLint + Prettier](#vscode--eslint--prettier)
+            -   [Installation guide](#installation-guide)
 
 ## Introduction
 
@@ -59,7 +59,7 @@ yarn start (or npm start)
 ```
 
 And also if you looking for typeless and pure css you can find it [here](https://github.com/crsandeep/simple-react-full-stack)
- 
+
 ## Documentation
 
 ### Folder Structure
@@ -118,98 +118,95 @@ Babel requires plugins to do the transformation. Presets are the set of plugins 
 [webpack.config.js](https://webpack.js.org/configuration/) file is used to describe the configurations required for webpack. Below is the webpack.config.js file which I am using.
 
 ```javascript
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
-const outputDirectory = 'dist';
+const outputDirectory = 'dist'
 
 module.exports = {
-  entry: ['babel-polyfill', './src/client/index.tsx'],
-  output: {
-    path: path.join(__dirname, outputDirectory),
-    filename: './js/[name].bundle.js'
-  },
-  devtool: "source-map",
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
-        }
-      },
-      {
-        test: /\.tsx?$/,
-        use:[
-          {
-            loader: "awesome-typescript-loader"
-          },
-        ],
-        exclude: /node_modules/
-      },
-      {
-        enforce: "pre",
-        test: /\.js$/,
-        loader: "source-map-loader"
-      },
-      {
-        test: /\.less$/,
-        use: [
-          { loader: 'style-loader' },
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: './Less',
-              hmr: process.env.NODE_ENV === 'development',
+    entry: ['babel-polyfill', './src/client/index.tsx'],
+    output: {
+        path: path.join(__dirname, outputDirectory),
+        filename: './js/[name].bundle.js',
+    },
+    devtool: 'source-map',
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                },
             },
-          },
-          { loader: 'css-loader' },
-          {
-            loader: 'less-loader',
-            options: {
-              strictMath: true,
-              noIeCompat: true,
-            }
-          },
-        ]
-      },
-      {
-        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-        loader: 'url-loader?limit=100000'
-      },
-    ]
-  },
-  resolve: {
-    extensions: ['*', '.ts', '.tsx', '.js', '.jsx', '.json', '.less']
-  },
-  devServer: {
-    port: 3000,
-    open: true,
-    proxy: {
-      '/api': 'http://localhost:8050'
-    }
-  },
-  plugins: [
-    new CleanWebpackPlugin([outputDirectory]),
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-      favicon: './public/favicon.ico',
-      title: "Book Manager",
-    }),
-    new MiniCssExtractPlugin({
-      filename: './css/[name].css',
-      chunkFilename: './css/[id].css',
-    }),
-    new CopyPlugin([
-      { from: './src/client/Assets', to: 'assets' },
-    ])
-  ],
-};
-
+            {
+                test: /\.tsx?$/,
+                use: [
+                    {
+                        loader: 'awesome-typescript-loader',
+                    },
+                ],
+                exclude: /node_modules/,
+            },
+            {
+                enforce: 'pre',
+                test: /\.js$/,
+                loader: 'source-map-loader',
+            },
+            {
+                test: /\.less$/,
+                use: [
+                    { loader: 'style-loader' },
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            publicPath: './Less',
+                            hmr: process.env.NODE_ENV === 'development',
+                        },
+                    },
+                    { loader: 'css-loader' },
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            strictMath: true,
+                            noIeCompat: true,
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+                loader: 'url-loader?limit=100000',
+            },
+        ],
+    },
+    resolve: {
+        extensions: ['*', '.ts', '.tsx', '.js', '.jsx', '.json', '.less'],
+    },
+    devServer: {
+        port: 3000,
+        open: true,
+        proxy: {
+            '/api': 'http://localhost:8050',
+        },
+    },
+    plugins: [
+        new CleanWebpackPlugin([outputDirectory]),
+        new HtmlWebpackPlugin({
+            template: './public/index.html',
+            favicon: './public/favicon.ico',
+            title: 'Book Manager',
+        }),
+        new MiniCssExtractPlugin({
+            filename: './css/[name].css',
+            chunkFilename: './css/[id].css',
+        }),
+        new CopyPlugin([{ from: './src/client/Assets', to: 'assets' }]),
+    ],
+}
 ```
 
 1.  **entry:** entry: ./src/client/index.tsx is where the application starts executing and Webpack starts bundling.
@@ -258,15 +255,15 @@ Express is a web application framework for Node.js. It is used to build our back
 src/server/index.tsx is the entry point to the server application. Below is the src/server/index.tsx file
 
 ```javascript
-const express = require("express");
+const express = require('express')
 //...
-const app = express();
+const app = express()
 
-app.use(express.static("dist"));
+app.use(express.static('dist'))
 
 //...
 
-app.listen(8050, () => console.log("Listening on port 8050!"));
+app.listen(8050, () => console.log('Listening on port 8050!'))
 ```
 
 This starts a server and listens on port 8080 for connections. The app responds with `{username: <username>}` for requests to the URL (/api/getUsername). It is also configured to serve the static files from **dist** directory.

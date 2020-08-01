@@ -1,16 +1,13 @@
 {
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "target": "es6",
-    "jsx": "react",
-    "module": "commonjs",
-    "sourceMap": true,
-    "outDir": "./dist/",
-    "skipLibCheck": true,
-    "esModuleInterop": true
-  },
-  "include": [
-    "./src/client/*",
-    "./src/client/types/**/*.d.ts",
-  ]
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "target": "es6",
+        "jsx": "react",
+        "module": "commonjs",
+        "sourceMap": true,
+        "outDir": "./dist/",
+        "skipLibCheck": true,
+        "esModuleInterop": true
+    },
+    "include": ["./src/client/*", "./src/client/types/**/*.d.ts"]
 }
