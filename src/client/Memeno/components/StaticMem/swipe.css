@@ -1,0 +1,57 @@
+element {
+    --opacity-remove-start: 1;
+    --rotation-angle-remove-start: rotateZ(0grad);
+    --rotation-angle-remove-end: rotateZ(0grad);
+    --rotation-angle-add-start: rotateZ(0grad);
+}
+
+@keyframes removeMem {
+    from {
+        transform: var(--rotation-angle-remove-start);
+        transform-origin: center 150%;
+        opacity: var(--opacity-remove-start);
+    }
+    to {
+        transform: var(--rotation-angle-remove-end);
+        transform-origin: center 150%;
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+@keyframes addMem {
+    from {
+        transform: var(--rotation-angle-add-start);
+        transform-origin: center 150%;
+        opacity: 0;
+    }
+    to {
+        transform: rotateZ(0grad);
+        transform-origin: center 150%;
+        opacity: 1;
+    }
+}
+
+.current-static-mem {
+    transform: var(--rotation-angle-remove-start);
+    transform-origin: center 150%;
+    opacity: var(--opacity-remove-start);
+}
+
+.prev-static-mem-animation-stop {
+    animation: none;
+    opacity: 0;
+}
+.current-static-mem-animation-stop {
+    animation: none;
+}
+
+.prev-static-mem-animation-start {
+    animation-name: removeMem;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+.current-static-mem-animation-start {
+    animation-name: addMem;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}

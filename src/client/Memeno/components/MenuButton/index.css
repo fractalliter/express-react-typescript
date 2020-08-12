@@ -1,0 +1,10 @@
+.menu-button {
+    background-image: url('resources/icons8-menu.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.menu-button {
+    width: 100%;
+    height: 100%;
+}

@@ -1,5 +1,14 @@
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import App from './Components/app'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import MobilePhoneScreen from './MobilePhoneScreen';
+import Memeno from './Memeno';
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(
+    <React.StrictMode>
+        <MobilePhoneScreen>
+            <Memeno />
+        </MobilePhoneScreen>
+    </React.StrictMode>,
+    document.getElementById('root')
+);

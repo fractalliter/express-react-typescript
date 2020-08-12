@@ -1,0 +1,33 @@
+.static-mem {
+    display: grid;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.current-static-mem,
+.prev-static-mem {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.current-static-mem:before,
+.prev-static-mem:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.4;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.mem-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    z-index: 2;
+}

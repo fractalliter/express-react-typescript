@@ -1,0 +1,67 @@
+.Memeno {
+    display: grid;
+    grid-template-rows: [header-row] 0.12fr [content-row] 0.76fr [footer-row] 0.12fr [end-row];
+    justify-content: stretch;
+    align-content: stretch;
+}
+
+/* Common structure */
+.header {
+    display: grid;
+    grid-area: header-row / 1 / content-row / 5;
+    grid-template-columns: [menu-column] 0.25fr [memeno-header-column] 0.5fr [avatar-column] 0.25fr [end-column];
+
+    margin: 2% 2%;
+}
+.content {
+    grid-area: content-row / 1 / footer-row / 5;
+    margin: 0 2%;
+}
+.footer {
+    display: grid;
+    grid-area: footer-row / 1 / end-row / 5;
+    grid-template-columns: [dislike-column] 0.5fr [like-column] 0.5fr [end-column];
+    margin: 2%;
+}
+
+/* header */
+.menu-button {
+    grid-area: 1 / menu-column / 2 / memeno-header-column;
+}
+.memeno-header {
+    grid-area: 1 / memeno-header-column / 2 / avatar-column;
+}
+.avatar-button {
+    grid-area: 1 / avatar-column / 2 / end-column;
+}
+
+/* footer */
+.dislike-button {
+    grid-area: 1 / dislike-column / 2 / like-column;
+}
+.like-button {
+    grid-area: 1 / like-column / 2 / end-column;
+}
+
+/* Visual stiles */
+.Memeno {
+    background: white;
+}
+.memeno-menu-button {
+    width: 30%;
+    height: 30%;
+    align-self: center;
+    position: relative;
+    left: 10%;
+}
+.memeno-header {
+    font-size: 200%;
+    position: relative;
+    top: -10%;
+    left: 7%;
+}
+.memeno-avatar-button {
+    position: relative;
+    left: 0.3em;
+    transform: scale(0.6, 0.8);
+}

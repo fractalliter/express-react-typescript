@@ -1,0 +1,12 @@
+.MobilePhoneScreen {
+    display: grid;
+    grid-template-rows: [screen-row-begin] 1fr [screen-row-end];
+    grid-template-columns: [screen-column-begin] 1fr [screen-column-end];
+    margin: auto;
+}
+.MobilePhoneScreen {
+    border-radius: 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 100vh;
+}

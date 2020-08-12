@@ -10,7 +10,8 @@
         "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
         "server": "nodemon dist-server/index.js",
         "dev": "concurrently \"npm run server\" \"npm run client\"",
-        "prettier": "prettier --write ."
+        "prettier": "prettier --write .",
+        "eslint": "eslint \"src/**\""
     },
     "author": "Elias Rahmani",
     "license": "ISC",
@@ -22,6 +23,7 @@
         "express": "^4.16.3",
         "react": "^16.5.2",
         "react-dom": "^16.5.2",
+        "react-swipeable": "^5.5.1",
         "sqlite3": "^5.0.0",
         "swiper": "^6.1.1"
     },
@@ -30,6 +32,8 @@
         "@babel/plugin-proposal-class-properties": "^7.0.0",
         "@babel/preset-env": "^7.0.0",
         "@babel/preset-react": "^7.0.0",
+        "@typescript-eslint/eslint-plugin": "^3.9.0",
+        "@typescript-eslint/parser": "^3.9.0",
         "awesome-typescript-loader": "^5.2.1",
         "babel-eslint": "^10.0.0",
         "babel-loader": "^8.0.0",
@@ -38,10 +42,6 @@
         "copy-webpack-plugin": "^6.0.3",
         "css-loader": "^4.2.0",
         "eslint": "^7.6.0",
-        "eslint-config-airbnb": "^18.2.0",
-        "eslint-plugin-import": "^2.11.0",
-        "eslint-plugin-jsx-a11y": "^6.0.3",
-        "eslint-plugin-react": "^7.7.0",
         "file-loader": "^6.0.0",
         "html-webpack-plugin": "^4.3.0",
         "less": "^3.9.0",

@@ -1,10 +1,15 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CopyPlugin = require('copy-webpack-plugin')
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const path = require('path');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const CopyPlugin = require('copy-webpack-plugin');
 
-const outputDirectory = 'dist'
+const outputDirectory = 'dist';
 
 module.exports = {
     entry: ['babel-polyfill', './src/client/index.tsx'],
@@ -60,7 +65,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+                test: /\.(png|woff|woff2|eot|ttf|svg|jpg)$/,
                 loader: 'url-loader?limit=100000',
             },
         ],
@@ -91,4 +96,4 @@ module.exports = {
         //   { from: './src/client/Assets', to: 'assets' },
         // ]})
     ],
-}
+};
