@@ -1,4 +1,6 @@
 {
+  "extends": "@tsconfig/node12/tsconfig.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "target": "es5",
@@ -8,6 +10,9 @@
     "outDir": "./dist/",
     "skipLibCheck": true
   },
+  "exclude": [
+    "./src/server "
+  ],
   "include": [
     "./src/client/*",
     "./src/client/types/**/*.d.ts"

@@ -12,7 +12,7 @@ module.exports = {
     path: path.join(__dirname, outputDirectory),
     filename: './js/[name].bundle.js'
   },
-  devtool: "source-map",
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -24,17 +24,17 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        use:[
+        use: [
           {
-            loader: "awesome-typescript-loader"
+            loader: 'awesome-typescript-loader'
           },
         ],
         exclude: /node_modules/
       },
       {
-        enforce: "pre",
+        enforce: 'pre',
         test: /\.js$/,
-        loader: "source-map-loader"
+        loader: 'source-map-loader'
       },
       {
         test: /\.less$/,
@@ -69,8 +69,13 @@ module.exports = {
   devServer: {
     port: 3000,
     open: true,
+    hot: true,
     proxy: {
-      '/api': 'http://localhost:8050'
+      '/api/**': {
+        target: 'http://localhost:8050',
+        secure: false,
+        changeOrigin: true
+      }
     }
   },
   plugins: [
@@ -78,7 +83,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
       favicon: './public/favicon.ico',
-      title: "Book Manager",
+      title: 'express-typescript-react',
     }),
     new MiniCssExtractPlugin({
       filename: './css/[name].css',
