@@ -9,7 +9,7 @@ export default class Test implements ITest {
         this.#_text = text;
     }
 
-    public get text() {
+    public get text(): string {
         return this.#_text
     }
 

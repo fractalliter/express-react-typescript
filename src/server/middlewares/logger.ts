@@ -1,10 +1,10 @@
 import {Request, Response} from 'express';
 
-interface IReqs {date: string, method: string, url: string, body: object};
+interface IReqs {date: string, method: string, url: string, body: {[property: string]: any}}
 
 const reqs: IReqs[] = [];
 
-export default (req: Request, res: Response, next: Function) => {
+export default (req: Request, res: Response, next: (param?: unknown) => void) => {
     console.clear()
     const date: Date = new Date();
     reqs.push({

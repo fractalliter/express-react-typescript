@@ -1,20 +1,23 @@
 import {userInfo} from 'os';
 import router from '../router';
 import Test from '../../models/test';
+import {Request, Response} from "express";
 
 router.route('/test')
-    .get((req, res) => {
+    .get((req: Request, res: Response) => {
         res.json({username: userInfo().username});
     })
-    .post((req, res) => {
+    .post((req: Request, res: Response) => {
         const {text} = new Test(`This is what you posted: ${req.body.text}`);
         res.json({text});
     })
-    .put((req, res) => {
-        res.json({text: `I put this somewhere: ${req.body.text}`});
+    .put((req: Request, res: Response) => {
+        const {text} = new Test(`I put this somewhere: ${req.body.text}`);
+        res.json({text});
     })
-    .delete((req, res) => {
-        res.json({text: `I deleted this one : ${req.body.text}`});
+    .delete((req:Request, res:Response) => {
+        const {text} = new Test(`I deleted this one : ${req.body.text}`);
+        res.json({text});
     });
 
 export default router;

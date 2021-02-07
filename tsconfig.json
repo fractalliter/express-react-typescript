@@ -3,12 +3,15 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "target": "es5",
+    "target": "es2019",
     "jsx": "react",
     "module": "commonjs",
     "sourceMap": true,
     "outDir": "./dist/",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "lib": [
+      "DOM"
+    ]
   },
   "exclude": [
     "./src/server "
