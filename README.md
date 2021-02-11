@@ -25,6 +25,10 @@ A boilerplate to build web application using Express and React with help of Type
 
 It's a really well-configured approach for building applications with full-stack Typescript. It's configured for Back-end development with using MongoDB as Database, ExpressJS framework for web services and Front-end development using ReactJS library with help of Typescript language and Less preprocessor for stylesheets.
 
+## prerequisite
+
+-First make sure that you have a MongoDB database installed on your machine.
+
 ### Development mode
 
 In the development mode, you will have a back-end server running with [nodemon](https://nodemon.io/) and a Front-end server running with the [webpack dev server](https://webpack.js.org/configuration/dev-server/). The [webpack dev server](https://webpack.js.org/configuration/dev-server/) which helps with hot and live reloading for Front-end. The server-side Express code will be served by a node server using [nodemon](https://nodemon.io/) which helps in automatically restarting the server whenever server-side code changes.
