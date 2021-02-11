@@ -1,19 +1,24 @@
 import mongoose, {Connection, Mongoose} from 'mongoose';
-import { configs } from './configs';
+import {configs} from './configs';
 import {IConfigs} from "./domain/IConfigs";
 
-class Database{
+class Database {
     private readonly _config: IConfigs;
     private readonly _mongo: Mongoose;
+
     constructor(config: IConfigs, mongo: Mongoose) {
         this._config = config;
         this._mongo = mongo;
     }
+
     dbConnection(): Mongoose {
-        const { mongodb: {url, port, collection} } = this._config;
+        const {mongodb: {url, port, collection, password, username}} = this._config;
+        const mongoURL = (username && password)
+            ? `mongodb://${username}:${password}${url}:${port}/${collection}`
+            : `mongodb://${url}:${port}/${collection}`;
         this._mongo
             .connect(
-                `mongodb://${url}:${port}/${collection}`,
+                mongoURL,
                 {useNewUrlParser: true, useUnifiedTopology: true}
             );
         const db: Connection = this._mongo.connection;
