@@ -1,114 +1,123 @@
 import * as React from 'react';
 import '../Less/app.less';
-import * as ProfilePicture from '../Assets/profile.png';
 import {apiRoute} from '../utils';
+import {AppProps, AppStates} from "../../server/domain/IApp";
+import {ITest} from "../../server/domain/ITest";
+import {Put, Post, Get, Delete} from "../Services";
 
-interface AppStates {
-  username?: string;
-  textOfPostTest: string,
-  textForPost: string,
-  textOfPutTest: string,
-  textForPut: string,
-  textOfDeleteTest: string,
-  textForDelete: string,
-}
-export default class App extends React.Component<{}, AppStates> {
-  state: AppStates = {
-    username: '',
-    textOfPostTest: '',
-    textForPost: '',
-    textOfPutTest: '',
-    textForPut: '',
-    textOfDeleteTest: '',
-    textForDelete: '',
-  };
+export default class App extends React.Component<AppProps, AppStates> {
+    state: AppStates = {
+        username: '',
+        textOfPostTest: '',
+        textForPost: '',
+        textOfPutTest: '',
+        textForPut: '',
+        textOfDeleteTest: '',
+        textForDelete: '',
+    };
 
-  getUser = () => {
-    fetch(apiRoute.getRoute('test'))
-      .then(res => res.json())
-      .then(res => this.setState({username: res.username}));
-  }
+    testGet = async (): Promise<void> => {
+        try {
+            const res: { username: string } = await Get(apiRoute.getRoute('test'))
+            this.setState({username: res.username});
+        } catch (e) {
+            this.setState({username: e.message});
+        }
+    }
 
 
-  sendUserInfo = () => {
-    let text = this.state.textOfPostTest;
+    testPost = async (): Promise<void> => {
+        const {textOfPostTest} = this.state;
 
-    text.trim() &&
-      fetch(apiRoute.getRoute('test'), {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          //'Content-Type': 'application/x-www-form -urlencoded',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({text})
-      })
-        .then(res => res.json()).then(res => this.setState({textForPost: res.text}));
-  }
+        if (textOfPostTest.trim()) {
+            try {
+                const res: ITest = await Post(
+                    apiRoute.getRoute('test'),
+                    {text: textOfPostTest}
+                );
+                this.setState({
+                    textForPost: res.text,
+                    response: res,
+                });
+            } catch (e) {
+                this.setState({textForPost: e.message});
+            }
+        }
+    }
 
-  changeUserInfo = () => {
-    this.state.textOfPutTest.trim() &&
-      fetch(apiRoute.getRoute('test'), {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({text: this.state.textOfPutTest})
-      }).then(res => res.json()).then(res => this.setState({textForPut: res.text}));
-  }
+    testPut = async (): Promise<void> => {
+        const {textOfPutTest, response} = this.state;
+        if (response && textOfPutTest.trim()) {
+            try {
+                const res: ITest = await Put(
+                    apiRoute.getRoute('test'),
+                    {text: textOfPutTest, id: response?._id}
+                    );
+                this.setState({textForPut: res.text, response: res});
+            } catch (e) {
+                this.setState({textForPut: e.message});
+            }
+        } else {
+            this.setState({
+                textForPut: "You don't have any resource in database to change. first use post",
+            })
+        }
+    }
 
-  deleteUserInfo = () => {
-    this.state.textOfDeleteTest.trim() &&
-      fetch(apiRoute.getRoute('test'), {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({text: this.state.textOfDeleteTest})
-      }).then(res => res.json()).then(res => this.setState({textForDelete: res.text}));
-  }
+    testDelete = async (): Promise<void> => {
+        const {response} = this.state;
+        if (response) {
+            try {
+                const res: ITest = await Delete(apiRoute.getRoute('test'), {id: response?._id});
+                this.setState({textForDelete: `${res._id} ${res.text}`, response: undefined});
+            } catch (e) {
+                this.setState({textForDelete: e.message});
+            }
+        } else {
+            this.setState({
+                textForDelete: "You don't have any resource in database to delete. first use post"
+            })
+        }
+    }
 
-  render() {
-    const {username, textForPost, textForPut, textForDelete} = this.state;
-    const inputText = "Input text...";
-    return (
-      <div>
-        <div>
-          <div>
+    render() {
+        const {username, textForPost, textForPut, textForDelete} = this.state;
+        const inputText = "Input text...";
+        return (
             <div>
-              <button onClick={this.getUser}>{"Test Get"}</button>
+                <div>
+                    <div>
+                        <div>
+                            <button onClick={this.testGet}>{"Test Get"}</button>
+                        </div>
+                        <label>{"Test for Get: "}</label>
+                        <h2>{!!username && `Hello ${username}!`}</h2>
+                    </div>
+                    <div>
+                        <input onChange={e => this.setState({textOfPostTest: e.target.value})} placeholder={inputText}/>
+                        <button onClick={this.testPost}>{"Test Post"}</button>
+                    </div>
+                    <div>
+                        <label>{"Test for Post: "}</label>
+                        <h3>{textForPost}</h3>
+                    </div>
+                    <div>
+                        <input onChange={e => this.setState({textOfPutTest: e.target.value})} placeholder={inputText}/>
+                        <button onClick={this.testPut}>{"Test Put"}</button>
+                    </div>
+                    <div>
+                        <label>{"Test for Put: "}</label>
+                        <h3>{textForPut}</h3>
+                    </div>
+                    <div>
+                        <button onClick={this.testDelete}>{"Test Delete"}</button>
+                    </div>
+                    <div>
+                        <label>{"Test for Delete: "}</label>
+                        <h3>{textForDelete}</h3>
+                    </div>
+                </div>
             </div>
-            <label>{"Test for Get: "}</label>
-            <h2>{!!username && `Hello ${username}!`}</h2>
-          </div>
-          <div>
-            <input onChange={e => this.setState({textOfPostTest: e.target.value})} placeholder={inputText} />
-            <button onClick={this.sendUserInfo}>{"Test Post"}</button>
-          </div>
-          <div>
-            <label>{"Test for Post: "}</label>
-            <h3>{textForPost}</h3>
-          </div>
-          <div>
-            <input onChange={e => this.setState({textOfPutTest: e.target.value})} placeholder={inputText} />
-            <button onClick={this.changeUserInfo} >{"Test Put"}</button>
-          </div>
-          <div>
-            <label>{"Test for Put: "}</label>
-            <h3>{textForPut}</h3>
-          </div>
-          <div>
-            <input onChange={e => this.setState({textOfDeleteTest: e.target.value})} placeholder={inputText} />
-            <button onClick={this.deleteUserInfo} >{"Test Delete"}</button>
-          </div>
-          <div>
-            <label>{"Test for Delete: "}</label>
-            <h3>{textForDelete}</h3>
-          </div>
-        </div>
-      </div>
-    );
-  }
+        );
+    }
 }
