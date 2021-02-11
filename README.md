@@ -27,7 +27,7 @@ It's a really well-configured approach for building applications with full-stack
 
 ## prerequisite
 
--First make sure that you have a MongoDB database installed on your machine.
+-First make sure that you have a MongoDB database installed somewhere and change the configurations in `src/server/configs.ts` file. the default is localhost.
 
 ### Development mode
 

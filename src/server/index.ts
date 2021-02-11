@@ -26,8 +26,8 @@ app.get('/', (req:Request, res:Response) => {
     res.sendFile('/dist/index.html');
 });
 
-// REGISTER OUR ROUTES -------------------------------
-// all of our routes will be prefixed with /api
+// REGISTER ROUTES
+// all of the routes will be prefixed with /api
 const routes: Router[] = Object.values(router);
 app.use('/api', routes);
 

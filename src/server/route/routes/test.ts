@@ -1,16 +1,17 @@
 import {userInfo} from 'os';
 import router from '../router';
-import Test from '../../models/test';
+import {Test} from '../../models';
 import {Request, Response} from "express";
 import {ITest} from "../../domain/ITest";
 
 router.route('/test')
     .get((req: Request, res: Response) => {
-        res.json({username: userInfo().username});
+        const {username}: {username: string} = userInfo();
+        res.json({username});
     })
     .post(async (req: Request, res: Response) => {
         const {text}: { text: string } = req.body;
-        const Text = new Test({text});
+        const Text: ITest = new Test({text});
         try {
             const savedText: ITest = await Text.save();
             res.json(savedText);
@@ -20,16 +21,22 @@ router.route('/test')
         }
     })
     .put((req: Request, res: Response) => {
-        const {id, text} = req.body;
+        const {id, text}: {id: string, text: string} = req.body;
         Test.updateOne({_id: id}, {text}, undefined, (err, test) => {
-            if (err) res.status(500).json({message: "something bad happened"})
+            if (err){
+                console.error(err);
+                res.status(500).json({message: "something bad happened"});
+            }
             else res.json({_id: id, text, ...test});
         })
     })
     .delete((req: Request, res: Response) => {
-        const {id} = req.body;
+        const {id}: {id: string} = req.body;
         Test.deleteOne({_id: id}, undefined, (err) => {
-            if (err) res.status(500).json({message: "something bad happened"})
+            if (err){
+                console.error(err);
+                res.status(500).json({message: "something bad happened"});
+            }
             else res.json({_id: id, text: "deleted successfully"});
         })
     });

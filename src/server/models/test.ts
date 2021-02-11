@@ -4,7 +4,7 @@ import {Schema} from "mongoose";
 
 const {mongo: {model}} = Database;
 
-const TestSchema: Schema = new Schema({text: {type: String}});
+const TestSchema: Schema<ITest> = new Schema<ITest>({text: {type: String, required: true}});
 
 export default model<ITest>('Test',TestSchema);
 
