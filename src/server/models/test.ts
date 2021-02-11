@@ -1,19 +1,10 @@
-interface ITest {
-    text: string;
-}
+import {ITest} from "../domain/ITest";
+import Database from '../dbConfigs';
+import {Schema} from "mongoose";
 
-export default class Test implements ITest {
-    #_text: string;
+const {mongo: {model}} = Database;
 
-    constructor(text: string) {
-        this.#_text = text;
-    }
+const TestSchema: Schema = new Schema({text: {type: String}});
 
-    public get text(): string {
-        return this.#_text
-    }
+export default model<ITest>('Test',TestSchema);
 
-    public set text(text: string) {
-        this.#_text = text;
-    }
-}
