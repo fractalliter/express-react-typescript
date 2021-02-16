@@ -14,10 +14,6 @@ router.route('/extra')
     .put((req: Request, res: Response) => {
         const {text} = new Test(`I put this somewhere: ${req.body.text}`);
         res.json({text});
-    })
-    .delete((req: Request, res: Response) => {
-        const {text} = new Test(`I deleted this one : ${req.body.text}`)
-        res.json({text});
     });
 
 export default router;

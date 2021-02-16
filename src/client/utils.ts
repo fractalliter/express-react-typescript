@@ -1,9 +1,6 @@
-import {Interface} from "readline";
-
 interface IApi {
     host: string;
-    getRoute: Function;
-    setRoute?: Function;
+    getRoute: (routeName: string) => string;
 }
 
 class Api implements IApi {
@@ -11,13 +8,14 @@ class Api implements IApi {
     constructor(host: string) {
         this.host = host;
     }
+
     getRoute(routeName: string) {
         return `${this.host}/api/${routeName}`
-    };
+    }
 
 }
 
-const apiRoute: Api = new Api("http://localhost:3000");
+const apiRoute: Api = Object.freeze(new Api("http://localhost:3000"));
 
 export {
     apiRoute,
