@@ -1,17 +1,18 @@
 
 import express, {Request, Response, Router, Express} from 'express';
-import bodyParser from 'body-parser';
 import router from './route';
 import DBConnect from "./dbConfigs";
+import { RequestHandler } from 'express-serve-static-core';
 
 // call express
 const app: Express = express(); // define our app using express
 
 // configure app to use bodyParser for
 // Getting data from body of requests
-app.use(bodyParser.json());
+app.use(express.urlencoded({extended: true}) as RequestHandler);
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.json() as RequestHandler) 
+
 
 const port: number = Number(process.env.PORT) || 8050; // set our port
 
